@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Student Management System to add, view, update, search, and delete student records.">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Student Management System home">
+      <span class="brand-mark">S</span>
+      <span>Student<span class="brand-light">Desk</span></span>
+    </a>
+    <span class="topbar-note"><span class="status-dot"></span> Student Records</span>
+  </header>
+
+  <main class="container">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">STUDENT ADMINISTRATION</p>
+        <h1>Student Management</h1>
+        <p class="subtitle">Keep student information organized in one place.</p>
+      </div>
+      <button id="addStudentTop" class="button button-primary" type="button">＋ Add Student</button>
+    </section>
+
+    <section class="stats-grid" aria-label="Student summary">
+      <article class="stat-card">
+        <div class="stat-icon purple">♙</div>
+        <div><p class="stat-label">Total Students</p><p id="totalStudents" class="stat-value">—</p></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon blue">▤</div>
+        <div><p class="stat-label">Courses Represented</p><p id="totalCourses" class="stat-value">—</p></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon green">✓</div>
+        <div><p class="stat-label">System Status</p><p id="systemStatus" class="stat-value status-value">Checking…</p></div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Student Records</h2>
+          <p class="panel-subtitle">View and manage registered students.</p>
+        </div>
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search students…" aria-label="Search students">
+        </label>
+      </div>
+
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Student</th><th>Roll Number</th><th>Email</th><th>Course</th><th class="actions-heading">Actions</th></tr>
+          </thead>
+          <tbody id="studentTableBody">
+            <tr><td colspan="5" class="empty-cell">Loading student records…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer"><span id="recordCount">Loading records…</span><span>StudentDesk · CRUD management</span></div>
+    </section>
+
+    <footer>Student Management System <span>•</span> Full Stack Development Project</footer>
+  </main>
+
+  <dialog id="studentDialog" class="student-dialog">
+    <form id="studentForm">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">STUDENT DETAILS</p><h2 id="dialogTitle">Add Student</h2></div>
+        <button id="closeDialog" class="icon-button" type="button" aria-label="Close form">×</button>
+      </div>
+      <input id="studentId" type="hidden">
+      <label for="name">Full name <span>*</span></label>
+      <input id="name" name="name" type="text" placeholder="e.g. Noor Fatima" minlength="2" maxlength="80" required>
+      <label for="rollNumber">Roll number <span>*</span></label>
+      <input id="rollNumber" name="rollNumber" type="text" placeholder="e.g. CS-2026-001" maxlength="30" required>
+      <label for="email">Email address <span>*</span></label>
+      <input id="email" name="email" type="email" placeholder="student@example.com" maxlength="120" required>
+      <label for="course">Course / Department <span>*</span></label>
+      <input id="course" name="course" type="text" placeholder="e.g. Computer Science" maxlength="100" required>
+      <p class="form-help">Fields marked with * are required. Roll numbers must be unique.</p>
+      <div class="dialog-actions">
+        <button id="cancelDialog" class="button button-secondary" type="button">Cancel</button>
+        <button id="saveStudent" class="button button-primary" type="submit">Save Student</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
